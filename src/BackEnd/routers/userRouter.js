@@ -18,9 +18,14 @@ userRouter.post('/login', (req, res) => {
         let token = jwt.sign(password, privateKey)
         let existingUsers = await userModel.find({ username: username, password: token })
         if (existingUsers.length === 0) {
-            res.end('user not found')
+            res.end(JSON.stringify({
+                message: 'user not found'
+            }))
         } else {
-            res.end('ok')
+            res.end(JSON.stringify({
+                message: 'ok',
+                userId: existingUsers[0]._id
+            }))
         }
     }
 })

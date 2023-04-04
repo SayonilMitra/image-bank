@@ -13,3 +13,13 @@
   padding: 5px 15px;
   cursor: pointer;
 }
+
+.log-out {
+  margin: 0 10px;
+  background-color: rgb(123, 43, 0);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+}
