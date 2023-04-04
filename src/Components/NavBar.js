@@ -6,7 +6,7 @@ export default function NavBar({ setSearch, setModal }) {
 
     function logout() {
         localStorage.removeItem('userId')
-        navigate('/')
+        navigate('/login')
     }
 
     return (

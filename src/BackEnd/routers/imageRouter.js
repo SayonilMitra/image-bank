@@ -8,13 +8,14 @@ imageRouter.use(cors())
 
 // =============== Add image to database ===============
 imageRouter.post('/add', (req, res) => {
-    let { imageLabel, imageUrl } = req.body
+    let { imageLabel, imageUrl, userId } = req.body
     addImage()
 
     async function addImage() {
         let newImage = await new imageModel({
             imageLabel: imageLabel,
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
+            userId: userId
         })
         await newImage.save()
         res.end()
@@ -22,10 +23,11 @@ imageRouter.post('/add', (req, res) => {
 })
 
 // =============== Get all images from database ===============
-imageRouter.get('/images', (req, res) => {
+imageRouter.get('/images/:userId', (req, res) => {
+    let userId = req.params.userId
     async function getImages() {
-        let imagesList = await imageModel.find()
-        res.end(JSON.stringify(imagesList))
+        let imagesList = await imageModel.find({ userId: userId })
+        res.end(JSON.stringify(imagesList.reverse()))
     }
     getImages()
 })

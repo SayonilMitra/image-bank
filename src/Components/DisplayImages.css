@@ -7,3 +7,11 @@
 #main-page {
   min-height: 100vh;
 }
+.user-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.user-images > * {
+  margin: 0 10px;
+}

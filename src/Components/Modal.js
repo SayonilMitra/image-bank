@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export default function Modal({ setModal, getImages }) {
 
+    let userId = localStorage.getItem('userId')
     let [imageLabel, setLabel] = useState('No Label')
     let [imageUrl, setUrl] = useState('')
     const backend = require('../BackEnd/backendLink')
@@ -13,7 +14,8 @@ export default function Modal({ setModal, getImages }) {
         setMessage('Uploading...')
         axios.post(`${backend}/add`, {
             imageLabel: imageLabel,
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
+            userId: userId
         }).then(res => {
             setModal(false)
             setMessage('Add')

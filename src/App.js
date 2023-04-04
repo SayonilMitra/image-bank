@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={userId === null ? <LandingPage /> : <DisplayImages />}></Route>
         <Route path='/yourpage' element={<DisplayImages />}></Route>
+        <Route path='/login' element={<LandingPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
