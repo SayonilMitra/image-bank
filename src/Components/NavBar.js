@@ -1,6 +1,6 @@
 import './NavBar.css'
 
-export default function NavBar({ setSearch }) {
+export default function NavBar({ setSearch, setModal }) {
 
     return (
         <div className="nav-bar">
@@ -9,7 +9,9 @@ export default function NavBar({ setSearch }) {
                 <input onChange={(e) => { setSearch(e.target.value) }} placeholder="search by name" />
             </div>
             <div>
-                <button className="add-photo">Add a photo</button>
+                <button className="add-photo" onClick={(e) => { setModal(true) }}>
+                    Add a photo
+                </button>
             </div>
         </div>
     )
