@@ -4,3 +4,6 @@
 .bg-white {
   background-color: rgb(255, 255, 255);
 }
+#main-page {
+  min-height: 100vh;
+}

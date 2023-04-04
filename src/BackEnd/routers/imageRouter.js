@@ -1,9 +1,12 @@
 const express = require('express')
 const imageRouter = express.Router()
 let imageModel = require('../models/imageModel')
+const cors = require('cors')
 
 imageRouter.use(express.json())
+imageRouter.use(cors())
 
+// =============== Add image to database ===============
 imageRouter.post('/add', (req, res) => {
     let { imageLabel, imageUrl } = req.body
     addImage()
@@ -18,6 +21,16 @@ imageRouter.post('/add', (req, res) => {
     }
 })
 
+// =============== Get all images from database ===============
+imageRouter.get('/images', (req, res) => {
+    async function getImages() {
+        let imagesList = await imageModel.find()
+        res.end(JSON.stringify(imagesList))
+    }
+    getImages()
+})
+
+// =============== Delete image from database ===============
 imageRouter.delete('/delete', (req, res) => {
     let { imageId } = req.body
     deleteImage()
