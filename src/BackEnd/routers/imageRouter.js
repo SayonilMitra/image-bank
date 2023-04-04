@@ -33,12 +33,11 @@ imageRouter.get('/images/:userId', (req, res) => {
 })
 
 // =============== Delete image from database ===============
-imageRouter.delete('/delete', (req, res) => {
-    let { imageId } = req.body
+imageRouter.delete('/delete/:imageId', (req, res) => {
     deleteImage()
 
     async function deleteImage() {
-        await imageModel.findByIdAndDelete(imageId)
+        await imageModel.findByIdAndDelete(req.params.imageId)
         res.end()
     }
 })

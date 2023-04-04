@@ -36,7 +36,7 @@ export default function DisplayImages() {
         <div className="user-images">
             {
                 images.map((item, index) => {
-                    return < ImageItem key={index} imageItem={item} search={search} />
+                    return < ImageItem key={index} imageItem={item} search={search} getImages={getImages} />
                 })
             }
         </div>
